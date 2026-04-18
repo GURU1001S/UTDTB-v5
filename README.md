@@ -10,7 +10,7 @@ UTDTB v5.0 is a massive, physics-grounded dataset designed to bridge the "scale 
 
 ---
 
-## 🎯 Motivation
+## 🎯 Architectural Motivation
 Existing prognostic benchmarks, such as NASA's N-CMAPSS, have driven the field forward but suffer from inherent limitations: limited scale, implicit degradation modes, absence of explicit causal structure, and an inability to controllably test distribution shift. 
 
 **UTDTB v5 addresses these gaps by providing:**
