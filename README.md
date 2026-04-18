@@ -59,16 +59,13 @@ UTDTB v5 is grounded in first-principles thermodynamics. Every sensor value is m
 | :--- | :--- | :--- |
 | **Physics Model** | Steady-state | **Transient Brayton + Thermal ODE** |
 | **Degradation** | 1 mode (implicit) | **4 explicit (Fatigue, Creep, Corros., Thermal)**|
-| **Causal Graph** | None | **[19-node DAG (38 edges)](docs/causal_graph.md)** |
+| **Causal Graph** | None | **19-node DAG (38 edges)** |
 | **RUL Labels** | Point estimate | **Distributional (Mean, Std, CI, Failure Prob)** |
 | **Events** | None | **10+ (Bird strike, Stall, Fuel contam, etc.)** |
 
 
 ---
 
-
-
-### Ablation Study Summary
 
 ## 🧪 Ablation Study Summary
 We conducted **25+ controlled experiments** across 7 categories to isolate the contribution of architectural components and robustness mechanisms in our baseline model, **ThermoPINN**.
@@ -109,6 +106,17 @@ Evaluating discrete feature sets reveals that adding auxiliary data (environment
 Across all experiments, a consistent pattern emerged regarding Physics-Informed Neural Networks:
 > **Strong predictive performance does not imply physical validity or robustness under distribution shift.** Post-hoc validation confirms severe errors in learned physical constants (e.g., a 57% error in the Paris Law exponent). The model learns statistical proxies instead of true governing equations, highlighting a fundamental limitation of current physics-informed learning approaches.
 
+## 🧠 Use Cases
+
+UTDTB v5 supports:
+
+- Remaining Useful Life (RUL) prediction
+- Physics-Informed Neural Networks (PINNs)
+- Domain adaptation under distribution shift
+- Uncertainty quantification (UQ)
+- Causal inference in dynamical systems
+- Digital twin simulation research
+
 ### ⚠️ Known Challenges & Stress Testing
 UTDTB is intentionally designed to serve as a **stress-test benchmark**, not just a performance leaderboard. Models trained on this dataset will be exposed to:
 * **Distribution shift failures** (via the heavily corrupted Test split).
@@ -116,17 +124,63 @@ UTDTB is intentionally designed to serve as a **stress-test benchmark**, not jus
 * **Uncertainty miscalibration** under simulated sensor dropout and ACARS degradation.
 
 ### 📂 Project Structure
-* `thermopinn/`: Core ThermoPINN architecture and physics loss functions.
-* `generator/`: The UTDTB v5 engine generation pipeline.
-* `docs/`: Technical derivations, causal graph specs, and validation protocols.
-* `results/ablation/`: High-resolution plots for all 25+ experiments.
+UTDTB/
+│
+├── README.md                     
+├── LICENSE
+├── .github
+│
+├── generator/
+│   └── utdtb_v5_generator.py    
+│
+├── thermopinn/
+│   ├── __init__.py
+│   ├── calibration.py
+│   ├── physics_loss.py
+│   ├── pinn_model.py
+│   └── task_sampler.py
+│
+├── experiments/
+│     └── scripts/
+│            ├── ablation_suite.py
+│            └──train_maml_pinn.py
+│   
+│ 
+├── results/
+│    └──ablation/
+│       ├── A_architecture_ablation.png
+│       ├── C_efficiency.png
+│       ├── D_feature_ablation.png
+│       ├── K_kshot_adaptation.png
+│       ├── P_physics_ablation.png
+│       ├── S_dimensionality_stress.png
+│       └── U_uncertainty_calibration.png
+│   
+│   
+│       
+│
+├── docs/
+│   ├── benchmarking_tasks.md        
+│   ├── dataset_spec.md
+│   ├── dataset_structure.md
+│   ├── implementation.md
+│   ├── limitations.md
+│   ├── physics_derivations.md
+│   └── system_architecture.md
+│
+└── examples/
+    ├── load_hdf5.py
+    ├── pytorch_training.py
+    └── pinn_training.py
 
 ### 📜 Citation
 ```bibtex
-@dataset{utdtb_v5,
-  title={UTDTB v5: Universal Turbofan Digital Twin Benchmark},
-  author={Guru Prasaath S.},
-  year={2026}
+@dataset{utdtb_v5_2026,
+  title   = {UTDTB v5: Universal Turbofan Digital Twin Benchmark},
+  author  = {Guru Prasaath S.},
+  year    = {2026},
+  note    = {Physics-grounded large-scale benchmark for prognostics and digital twins},
+  url     = {https://github.com/<your-username>/UTDTB-v5}
 }
 ```
 ---
@@ -150,3 +204,56 @@ with h5py.File("data/utdtb_v5.h5", "r") as f:
 
 # Mask NaNs (simulated sensor dropout/faults)
 X_train = np.nan_to_num(X_train, nan=0.0)
+```
+
+
+## 🔁 Reproducibility
+
+To reproduce all experiments:
+
+```bash
+git clone https://github.com/<your-username>/UTDTB-v5
+cd UTDTB-v5
+
+pip install -r requirements.txt
+
+python train.py --config configs/thermopinn.yaml
+
+python generator/generate_utdtb.py --config configs/beast.yaml
+```
+
+
+---
+
+## No Requirements / Dependencies Section
+
+Add:
+
+```md
+## 📦 Requirements
+
+- Python 3.8+
+- PyTorch
+- NumPy
+- h5py
+- SciPy
+- matplotlib
+
+Install via:
+
+```bash
+pip install -r requirements.txt
+
+```
+
+## Acknowledgments
+
+Inspired by NASA's N-CMAPSS dataset and recent advances in Physics-Informed Machine Learning.
+
+
+## 📄 License
+
+This project is licensed under the MIT License — see the `LICENSE` file for details.
+
+---
+
