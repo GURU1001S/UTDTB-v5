@@ -126,7 +126,55 @@ UTDTB v5 enables research in:
 - Uncertainty quantification (UQ)
 - Causal inference in dynamical systems
 - Digital twin simulation
-  
+
+
+  ## 🏆 Benchmark Tasks 
+
+UTDTB v5 defines standardized evaluation tasks:
+
+| Task | Description | Metric |
+|------|------------|--------|
+| **RUL Prediction (ID)** | Standard remaining life prediction | RMSE ↓ |
+| **RUL Prediction (OOD)** | Under sensor dropout & drift | RMSE ↓ |
+| **Uncertainty Calibration** | Reliability of predictions | ECE ↓ |
+| **Domain Adaptation** | Cross-domain generalization | ΔRMSE ↓ |
+| **Physics Consistency** | Alignment with governing laws | Error (%) ↓ |
+
+---
+
+## 📊 Example Results
+
+### RUL Prediction Performance (Reference Run)
+
+| Split | RMSE ↓ | MAE ↓ | ECE ↓ |
+|------|--------|------|------|
+| Train | 28.4 | 21.7 | 0.15 |
+| Val   | 34.9 | 26.3 | 0.18 |
+| Test (OOD) | 58.2 | 44.7 | 0.29 |
+
+---
+
+### Domain Shift Impact
+
+| Condition | RMSE |
+|----------|------|
+| No Shift | 31.88 |
+| +50% Dropout | 42.3 |
+| +200% Dropout | 58.2 |
+| Drift + Fault Injection | 61.7 |
+
+---
+
+### Physics Consistency Check
+
+| Parameter | True Value | Learned | Error |
+|----------|-----------|--------|------|
+| Paris Law Exponent (m) | 3.0 | 1.3 | **57% ❌** |
+
+> ⚠️ Confirms **identifiability failure** in PINNs under real-world noise.
+
+---
+
 
 ### ⚠️ Known Challenges & Stress Testing
 UTDTB is intentionally designed to serve as a **stress-test benchmark**, not just a performance leaderboard. Models trained on this dataset will be exposed to:
@@ -183,20 +231,6 @@ UTDTB/
     └── pinn_training.py
 ```
 
-## 🏆 Benchmark Tasks
-
-UTDTB v5 defines standardized evaluation tasks:
-
-- RUL Regression (Primary)
-- OOD Generalization (Test split)
-- Uncertainty Calibration (ECE, NLL)
-- Few-shot Adaptation (k-shot regime)
-
-Evaluation metrics:
-- RMSE ↓
-- NASA Score ↓
-- ECE ↓
-  
 
 ### 📜 Citation
 ```bibtex
@@ -260,8 +294,18 @@ python generator/utdtb_v5_generator.py --config configs/beast.yaml
 - SciPy
 - matplotlib
 
-Install via:
 
+
+## 🌍 Contributing to the Leaderboard
+
+We welcome external submissions!
+
+Submit:
+- Model architecture
+- Training config
+- Results (RMSE, ECE, OOD)
+
+via Pull Request or Issue.
 
 
 ## Acknowledgments
