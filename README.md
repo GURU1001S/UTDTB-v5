@@ -4,9 +4,19 @@
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-UTDTB v5.0 is a massive, physics-grounded dataset designed to bridge the "scale gap" in turbofan prognostics. It simulates 1.1M+ flight cycles across a global fleet, providing high-fidelity signals for RUL regression, causal inference, and Physics-Informed Neural Networks (PINNs).
+UTDTB v5.0 is a large-scale, physics-grounded benchmark designed to close the realism gap in turbofan prognostics. It simulates 1.1M+ flight cycles across a global fleet with explicit physical degradation, causal structure, and controllable distribution shift.
 
 > **⚠️ Note:** All model results and ablation studies reported in this repository are based on the **ThermoPINN** baseline and are provided for benchmarking purposes only. The UTDTB dataset itself is entirely model-agnostic and supports a wide range of architectures (Transformers, LSTMs, GNNs).
+
+---
+
+### 💡 Why This Matters
+
+This benchmark highlights a critical limitation in modern AI systems:
+
+> Models can achieve strong predictive accuracy while failing to learn true physical laws.
+
+UTDTB v5 provides a controlled environment to study and address this gap.
 
 ---
 
@@ -108,14 +118,15 @@ Across all experiments, a consistent pattern emerged regarding Physics-Informed 
 
 ## 🧠 Use Cases
 
-UTDTB v5 supports:
+UTDTB v5 enables research in:
 
 - Remaining Useful Life (RUL) prediction
 - Physics-Informed Neural Networks (PINNs)
 - Domain adaptation under distribution shift
 - Uncertainty quantification (UQ)
 - Causal inference in dynamical systems
-- Digital twin simulation research
+- Digital twin simulation
+  
 
 ### ⚠️ Known Challenges & Stress Testing
 UTDTB is intentionally designed to serve as a **stress-test benchmark**, not just a performance leaderboard. Models trained on this dataset will be exposed to:
@@ -172,6 +183,21 @@ UTDTB/
     └── pinn_training.py
 ```
 
+## 🏆 Benchmark Tasks
+
+UTDTB v5 defines standardized evaluation tasks:
+
+- RUL Regression (Primary)
+- OOD Generalization (Test split)
+- Uncertainty Calibration (ECE, NLL)
+- Few-shot Adaptation (k-shot regime)
+
+Evaluation metrics:
+- RMSE ↓
+- NASA Score ↓
+- ECE ↓
+  
+
 ### 📜 Citation
 ```bibtex
 @dataset{utdtb_v5_2026,
@@ -216,19 +242,15 @@ cd UTDTB-v5
 
 pip install -r requirements.txt
 
-python train.py --config configs/thermopinn.yaml
+python experiments/scripts/train_maml_pinn.py --config configs/thermopinn.yaml
+python generator/utdtb_v5_generator.py --config configs/beast.yaml
 
-python generator/generate_utdtb.py --config configs/beast.yaml
+python generator/utdtb_v5_generator.py --config configs/beast.yaml
 ```
 
 
 ---
 
-## No Requirements / Dependencies Section
-
-Add:
-
-```md
 ## 📦 Requirements
 
 - Python 3.8+
@@ -240,14 +262,11 @@ Add:
 
 Install via:
 
-```bash
-pip install -r requirements.txt
 
-```
 
 ## Acknowledgments
 
-Inspired by NASA's N-CMAPSS dataset and recent advances in Physics-Informed Machine Learning.
+This work builds upon insights from NASA's N-CMAPSS dataset and recent advances in Physics-Informed Machine Learning and digital twin systems.
 
 
 ## 📄 License
