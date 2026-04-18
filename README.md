@@ -26,14 +26,14 @@ Existing prognostic benchmarks, such as NASA's N-CMAPSS, have driven the field f
 **Download UTDTB v5:**
 * **Google Drive:** [Download the BEAST Dataset Here](https://drive.google.com/drive/folders/1GSI8-Hf3YwIQrIZyKWbTTyBlQfFrAYH4?usp=drive_link)
 * **Format:** HDF5 (Recommended) / CSV
-* **Total Size (BEAST Config):** ~0.65GB
+* **Total Size (BEAST Config):** ~650MB
 
 ### Scale Configurations
 | Configuration | $n_{train}$ | $n_{test}$ | Max Cycles | ~Rows | ~HDF5 |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **QUICK** | 400 | 50 | 800 | ~500K | 160MB |
-| **MEDIUM**| 2,000 | 300 | 1,000 | ~1.5M | 370MB |
-| **BEAST** | **16,000** | **2,000** | **1,200** | **~16M** | **650MB** |
+| **QUICK** | 400 | 50 | 800 | ~500K | ~160MB |
+| **MEDIUM**| 2,000 | 300 | 1,000 | ~1.5M | ~370MB |
+| **BEAST** | **16,000** | **2,000** | **1,200** | **~16M** | **~650MB** |
 
 ### Split Characteristics (Reference Run)
 | Split | Engines | Rows | Domain Characteristics |
@@ -128,6 +128,7 @@ UTDTB/
 │
 ├── README.md                     
 ├── LICENSE
+├── requirements.txt
 ├── .github
 │
 ├── generator/
