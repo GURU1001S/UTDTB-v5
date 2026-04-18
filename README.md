@@ -133,7 +133,7 @@ UTDTB v5 enables research in:
 - Digital twin simulation
 
 
-  ## 🏆 Benchmark Tasks 
+## 🏆 Benchmark Tasks 
 
 UTDTB v5 defines standardized evaluation tasks:
 
