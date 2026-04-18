@@ -68,7 +68,7 @@ UTDTB v5 is grounded in first-principles thermodynamics. Every sensor value is m
 
 
 
-### 5. Ablation Study Summary
+### Ablation Study Summary
 
 ## 🧪 Ablation Study Summary
 We conducted **25+ controlled experiments** across 7 categories to isolate the contribution of architectural components and robustness mechanisms in our baseline model, **ThermoPINN**.
