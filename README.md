@@ -24,7 +24,7 @@ Existing prognostic benchmarks, such as NASA's N-CMAPSS, have driven the field f
 ## 📥 Dataset Access & Specifications
 
 **Download UTDTB v5:**
-* **Google Drive:** [Insert Link Here]
+* **Google Drive:** [Download the BEAST Dataset Here](https://drive.google.com/drive/folders/1GSI8-Hf3YwIQrIZyKWbTTyBlQfFrAYH4?usp=drive_link)
 * **Format:** HDF5 (Recommended) / CSV
 * **Total Size (BEAST Config):** ~0.65GB
 
@@ -43,8 +43,6 @@ Existing prognostic benchmarks, such as NASA's N-CMAPSS, have driven the field f
 | **Test** | 150 | 103,245 | +200% Dropout, +150% Drift, +80% Bird Strike |
 | **Total** | **1,600** | **1,109,391**| **Global Fleet Simulation** |
 
-* **Google Drive:** [Download the BEAST Dataset Here](https://drive.google.com/drive/folders/1GSI8-Hf3YwIQrIZyKWbTTyBlQfFrAYH4?usp=drive_link)
-  
 ---
 
 ## ⚙️ Governing Physics & Architecture
