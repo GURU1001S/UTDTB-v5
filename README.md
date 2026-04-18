@@ -20,6 +20,11 @@ UTDTB v5 provides a controlled environment to study and address this gap.
 
 ---
 
+## 🧠 UTDTB Pipeline Overview
+
+![UTDTB Pipeline](docs/images/data_pipeline.png)
+
+
 ## 🎯 Architectural Motivation
 Existing prognostic benchmarks, such as NASA's N-CMAPSS, have driven the field forward but suffer from inherent limitations: limited scale, implicit degradation modes, absence of explicit causal structure, and an inability to controllably test distribution shift. 
 
