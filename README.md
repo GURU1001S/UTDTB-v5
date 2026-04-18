@@ -124,15 +124,16 @@ UTDTB is intentionally designed to serve as a **stress-test benchmark**, not jus
 * **Uncertainty miscalibration** under simulated sensor dropout and ACARS degradation.
 
 ### 📂 Project Structure
+
+```text
 UTDTB/
-│
 ├── README.md                     
 ├── LICENSE
 ├── requirements.txt
-├── .github
+├── .github/
 │
 ├── generator/
-│   └── utdtb_v5_generator.py    
+│   └── utdtb_v5_generator.py     
 │
 ├── thermopinn/
 │   ├── __init__.py
@@ -142,13 +143,12 @@ UTDTB/
 │   └── task_sampler.py
 │
 ├── experiments/
-│     └── scripts/
-│            ├── ablation_suite.py
-│            └──train_maml_pinn.py
+│   └── scripts/
+│       ├── ablation_suite.py
+│       └── train_maml_pinn.py
 │   
-│ 
 ├── results/
-│    └──ablation/
+│   └── ablation/
 │       ├── A_architecture_ablation.png
 │       ├── C_efficiency.png
 │       ├── D_feature_ablation.png
@@ -156,9 +156,6 @@ UTDTB/
 │       ├── P_physics_ablation.png
 │       ├── S_dimensionality_stress.png
 │       └── U_uncertainty_calibration.png
-│   
-│   
-│       
 │
 ├── docs/
 │   ├── benchmarking_tasks.md        
@@ -173,6 +170,7 @@ UTDTB/
     ├── load_hdf5.py
     ├── pytorch_training.py
     └── pinn_training.py
+```
 
 ### 📜 Citation
 ```bibtex
