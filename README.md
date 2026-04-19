@@ -39,16 +39,16 @@ Existing prognostic benchmarks, such as NASA's N-CMAPSS, have driven the field f
 ## 📥 Dataset Access & Specifications
 
 **Download UTDTB v5:**
-* **Google Drive:** [Download the BEAST Dataset Here](https://drive.google.com/drive/folders/1GSI8-Hf3YwIQrIZyKWbTTyBlQfFrAYH4?usp=drive_link)
+* **Google Drive:** [Download the MEDIUM Dataset Here](https://drive.google.com/drive/folders/1GSI8-Hf3YwIQrIZyKWbTTyBlQfFrAYH4?usp=drive_link)
 * **Format:** HDF5 (Recommended) / CSV
-* **Total Size (BEAST Config):** ~650MB
+* **Total Size (Medium Config):** ~500MB
 
 ### Scale Configurations
 | Configuration | $n_{train}$ | $n_{test}$ | Max Cycles | ~Rows | ~HDF5 |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **QUICK** | 400 | 50 | 800 | ~500K | ~160MB |
-| **MEDIUM**| 2,000 | 300 | 1,000 | ~1.5M | ~370MB |
-| **BEAST** | **16,000** | **2,000** | **1,200** | **~16M** | **~650MB** |
+| **QUICK** | 400 | 50 | 800 | ~500K | ~200MB |
+| **MEDIUM**| 2,000 | 300 | 1,000 | ~1.5M | ~500MB |
+| **BEAST** | **16,000** | **2,000** | **1,200** | **~16M** | **~5GB** |
 
 ### Split Characteristics (Reference Run)
 | Split | Engines | Rows | Domain Characteristics |
@@ -56,7 +56,7 @@ Existing prognostic benchmarks, such as NASA's N-CMAPSS, have driven the field f
 | **Train** | 1,300 | 898,225 | Baseline noise and faults |
 | **Val** | 150 | 107,921 | +50% Sensor Dropout, +30% Drift Faults |
 | **Test** | 150 | 103,245 | +200% Dropout, +150% Drift, +80% Bird Strike |
-| **Total** | **1,600** | **1,109,391**| **Global Fleet Simulation** |
+| **Total** | **1,600** | **1,109,391**| **Standard Reference Scale** |
 
 ---
 
